@@ -1,0 +1,32 @@
+
+
+
+<div class="col-sm-12 col-lg-4 col-md-6 mx-auto">
+<div class='card shadow-lg'>
+    <div class='card-body'>
+        {% if blog_post.image %}
+            <img src={{ blog_post.image.url }} class="card-image-top" style="img-fluid; max-width: 100%; height: auto;">
+        {% endif %}
+        <h5 class='card-title'> <a href='{{ blog_post.get_absolute_url }}'>{{ blog_post.title }}</a></h5>
+        <p class='card-text'>{{blog_post.content|linebreaks|truncatewords:"18" }}</p>
+        <a href="#" class="card-link">{{blog_post.user}}</a>
+        {% if not detail %}
+            <a href='{{ blog_post.get_absolute_url }}' class="stretched-link"></a>
+        {% endif %}
+    </div>
+</div> 
+</div>
+
+<style>
+
+.card-img-top {
+    width: 100%;
+    height: 5vh;
+    object-fit: cover;
+}
+
+.h5 {
+    color: green;
+}
+
+</style>

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    {% if post.image %}
+            <img src={{ post.image.url }} class="card-image-top" style="img-fluid; max-width: 100%; height: auto;">
+        {% endif %}
+
+    <h1>{{post.title}}</h1>
+    <p>{{post.content|linebreaks }}</p>
+
+    <div class="d-inline-flex p-2">Published: {{post.published_date}}</div>
+    <div class="d-inline-flex p-2">Last Updated: {{post.updated}}</div></br>
+
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+        <a href='{{ post.get_edit_url }}'>Edit</a>
+        <a href='{{ post.get_delete_url }}'>Delete</a>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

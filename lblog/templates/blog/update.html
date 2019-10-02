@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <h4>Update Blog Post:</h4>
+        <form method='POST' action= {{ next_url }} enctype='multipart/form-data'> {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit'>Edit</button>
+        </form>
+
+{% endblock %}
